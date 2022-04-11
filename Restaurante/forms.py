@@ -27,20 +27,3 @@ class EmpleadoFormulario(forms.Form):
     apellido = forms.CharField(max_length=30)
     mail = forms.EmailField()
     puesto = forms.CharField(max_length=20)
-
-
-class BusquedaComida(forms.Form):
-    partial_comida = forms.CharField(label="Buscador", max_length=40)
-
-
-class BusquedaBebida(forms.Form):
-    partial_bebida = forms.CharField(label="Buscador", max_length=40)
-
-
-class BusquedaEmpleado(forms.Form):
-    partial_empleado = forms.CharField(label="Buscador", max_length=50)
-
-
-class BusquedaMesa(forms.Form):
-    partial_mesa = forms.CharField(label="Buscador", max_length=30)
-
