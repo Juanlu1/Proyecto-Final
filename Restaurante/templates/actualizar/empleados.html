@@ -1,0 +1,11 @@
+{% extends 'index.html' %}
+
+<form action={% url "actualizar_empleado" estudiante.id %} method = "post">
+    {% csrf_token %}
+
+    <table>
+        {{formulario.as_table}}
+    </table>
+
+    <input type="submit" placeholder="Actualizar">
+</form>

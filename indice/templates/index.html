@@ -56,13 +56,14 @@
 
   <main id="main">
 
-{% block a %}
+
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
           <H1><FONT SIZE= 20 COLOR="navy">Lookiero</FONT></H1>
+          {% block a %}
           <h2>¿Que es Lookiero?</h2>
           <p>Lookiero es una pagina web la cual esta destinada a informar sobre el restaurante "Lookiero".
             Registrate (o inicia sesión si ya tienes una cuenta) para podeer acceder a todas las funciones!
@@ -72,26 +73,26 @@
         <div class="row">
           <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box">
-              <h4><a href={% url 'formulario_comidas' %}>Comidas</a></h4>
+              <h4><a href={% url 'listado_comidas' %}>Comidas</a></h4>
                 <p>Hay muchas comidas en el mundo pero lamentablemente tenemos un limite. No por eso nos vamos
                   a detener! Siempre estaremos intentando traer nuevas ricas comidas!</p>
             </div>
           </div>
           <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box">
-              <h4><a href={% url 'formulario_bebidas' %}>Bebidas</a></h4>
+              <h4><a href={% url 'listado_bebidas' %}>Bebidas</a></h4>
               <p>Elige tu bebida favorita y deleitate con su sabor!</p>
             </div>
           </div>
           <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box">
-              <h4><a href={% url 'formulario_empleados' %}>Empleados</a></h4>
+              <h4><a href={% url 'listado_empleados' %}>Empleados</a></h4>
               <p>En este apartado puedes encontrar informacion sobre las personas que trabajan con nosotros!</p>
             </div>
           </div>
           <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="400">
             <div class="icon-box">
-              <h4><a href={% url 'formulario_mesas' %}>Mesas</a></h4>
+              <h4><a href={% url 'listado_mesas' %}>Mesas</a></h4>
               <p>Aqui puedes reservar mesas e incluso saber cuales hay!</p>
             </div>
           </div>

@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block a %}
+
+<a href= {% url "formulario_mesas" %}>Crear una mesa</a>
+
+
+{% for mesa in listado_mesas %}
+
+<li>
+    {{mesa}}
+    <a href={% url "borrar_mesa" %}>Borrar</a>
+</li>
+
+{% endfor %}
+
+{% endblock a %}

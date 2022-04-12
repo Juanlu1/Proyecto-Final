@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block a %}
+
+<a href= {% url "listado_bebidas" %}>Crear una bebida</a>
+
+
+{% for bebida in listado_bebidas %}
+
+<li>
+    {{bebida}}
+    <a href={% url "borrar_bebida" %}>Borrar</a>
+</li>
+
+{% endfor %}
+
+{% endblock a %}
