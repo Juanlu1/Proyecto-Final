@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+
+{% block a %}
+{% if msj %}
+    {{msj}}
+{% endif %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>Iniciar sesión</button>
+</form>
+{% endblock a %}

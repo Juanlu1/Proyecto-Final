@@ -1,7 +1,6 @@
 
 from django import forms
 
-
 class ComidaFormulario(forms.Form):
     nombre = forms.CharField(max_length=30)
     clasificacion_en_carta = forms.CharField(max_length=50)

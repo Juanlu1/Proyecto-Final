@@ -43,9 +43,9 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href={% url 'inicio' %}>Inicio</a></li> 
-          <li><a class="nav-link scrollto active" href={% url 'inicio' %}>Registrarse</a></li>
-          <li><a class="nav-link scrollto active" href={% url 'inicio' %}>Iniciar sesión</a></li>
-          <li><a class="nav-link scrollto active" href={% url 'inicio' %}>Cerrar sesión</a></li>
+          <li><a class="nav-link scrollto active" href={% url 'registrar' %}>Registrarse</a></li>
+          <li><a class="nav-link scrollto active" href={% url 'login' %}>Iniciar sesión</a></li>
+          <li><a class="nav-link scrollto active" href={% url 'logout' %}>Cerrar sesión</a></li>
           </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -56,20 +56,26 @@
 
   <main id="main">
 
-
+{% block b %}
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
           <H1><FONT SIZE= 20 COLOR="navy">Lookiero</FONT></H1>
-          {% block a %}
+          <h1> 
+            {% if msj %}
+              {{msj}}
+            {% endif %}
+          </h1>
+          {% endblock b %}
+          {% block a %} {% block c %}
           <h2>¿Que es Lookiero?</h2>
           <p>Lookiero es una pagina web la cual esta destinada a informar sobre el restaurante "Lookiero".
             Registrate (o inicia sesión si ya tienes una cuenta) para podeer acceder a todas las funciones!
           </p>
         </div>
-
+        {% endblock c %}
         <div class="row">
           <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box">
