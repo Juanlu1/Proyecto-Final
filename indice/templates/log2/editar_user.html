@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block a %}
+
+    <h2>Editar user</h2>
+
+{% if msj %}
+    {{msj}}
+{% endif %}
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>Guardar</button>
+</form>
+
+{% endblock a %}
