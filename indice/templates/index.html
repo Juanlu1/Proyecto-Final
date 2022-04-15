@@ -42,12 +42,22 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href={% url 'inicio' %}>Inicio</a></li> 
-          <li><a class="nav-link scrollto active" href={% url 'registrar' %}>Registrarse</a></li>
+          <li><a class="nav-link scrollto active" href={% url 'inicio' %}>Inicio</a></li>   
+
+          {% if request.user.is_authenticated %}
+
+          <li><a class="nav-link scrollto active" href={% url 'editar_user' %}>
+            <img src="{{user_avatar_url}}" alt="Editar usuario">
+        </a></li>
+        <li><a class="nav-link scrollto active" href={% url 'logout' %}>Cerrar sesión</a></li>
+        
+          {% else %}
+
           <li><a class="nav-link scrollto active" href={% url 'login' %}>Iniciar sesión</a></li>
-          <li><a class="nav-link scrollto active" href={% url 'editar_user' %}>Editar usuario</a></li>
-          <li><a class="nav-link scrollto active" href={% url 'logout' %}>Cerrar sesión</a></li>
-          </li>
+          <li><a class="nav-link scrollto active" href={% url 'registrar' %}>Registrarse</a></li>
+          
+          {% endif %}
+
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from .forms import Creacion, Edicion
+from .models import Avatar
 # Create your views here.
 
 
@@ -22,7 +23,7 @@ def iniciar_sesion(request):
             
             if user is not None:
                 login(request, user)
-                return render(request, "index.html", {"msj": "Iniciaste sesión!"})
+                return render(request, "index.html", {"msj": "Iniciaste sesión!", "user_avatar_url": buscar_url_avatar(request.user)})
             else:
                 return render(request, "log2/iniciar_sesion.html", {"form": form, "msj": "No se autentico"})
         
@@ -37,15 +38,18 @@ def iniciar_sesion(request):
 
 def registrar(request):
     form = UserCreationForm()
-    if request.method == "post":
+
+    if request.method == "POST":
         form = UserCreationForm(request.POST)
 
         if form.is_valid():
             username = form.cleaned_data["username"]
             form.save()
-            return render(request, "index.html", {"msj": f"Se creo el user {username}"})
+            return render(request, "index.html", {"msj": f"Se creo el user {username}", "user_avatar_url": buscar_url_avatar(request.user)})
         else:
             return render(request, "log2/registrar.html", {"form": form, "msj": ""})
+    
+    form = Creacion()
     return render(request, "log2/registrar.html", {"form": form, "msj": ""})
 
 
@@ -74,6 +78,20 @@ def editar_user (request):
 
             logued_user.save()
 
-            return render (request, "index.html", {"msj": msj})
+            return render (request, "index.html", {"msj": msj, "user_avatar_url": buscar_url_avatar(request.user)})
         else:
-            return render (request, "log2/editar_user.html", {"form": form, "msj": msj})
+            return render (request, "log2/editar_user.html", {"form": form, "msj": "", "user_avatar_url": buscar_url_avatar(request.user)})
+
+    form = Edicion(
+        initial={
+            "first_name": request.user.first_name,
+            "last_name": request.user.last_name,
+            "email": request.user.email,
+            "username": request.user.username,
+        }
+    )
+    return render(request, "log2/editar_user.html"), {"form": form, "msj": "", "user_avatar_url": buscar_url_avatar(request.user)}
+
+
+def buscar_url_avatar(user):
+    return Avatar.objects.filter(user=user)[0].imagen.url

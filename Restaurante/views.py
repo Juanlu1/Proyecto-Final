@@ -1,11 +1,12 @@
 from django.shortcuts import redirect, render
+from django.contrib.auth.decorators import login_required
 
 from .models import Bebida, Comida, Empleado, Mesa
 from .forms import ComidaFormulario, BebidaFormulario, MesaFormulario, EmpleadoFormulario
 # Create your views here.
 
 
-
+@login_required
 def formulario_comidas(request):
     formulario = ComidaFormulario()
 
@@ -20,7 +21,7 @@ def formulario_comidas(request):
         return render(request, "restaurante/formulario_comidas.html", {})
     return render(request, "restaurante/formulario_comidas.html", {"formulario": formulario})
 
-
+@login_required
 def formulario_bebidas(request):
     formulario = BebidaFormulario()
     if request.method == "POST":
@@ -33,7 +34,7 @@ def formulario_bebidas(request):
         return render(request, "restaurante/formulario_bebidas.html", {})
     return render(request, "restaurante/formulario_bebidas.html", {"formulario": formulario})
 
-
+@login_required
 def formulario_empleados(request):
     formulario = EmpleadoFormulario()
     if request.method == "POST":
@@ -47,7 +48,7 @@ def formulario_empleados(request):
         return render(request, "restaurante/formulario_empleados.html", {})
     return render(request, "restaurante/formulario_empleados.html", {"formulario": formulario})
 
-
+@login_required
 def formulario_mesas(request):
     formulario = MesaFormulario()
     if request.method == "POST":
@@ -89,25 +90,25 @@ def listado_bebidas(request):
 
 
 
-
+@login_required
 def borrar_comida(request, id):
     comida = Comida.objects.get(id=id)
     comida.delete()
     return redirect("listado_comidas")
 
-
+@login_required
 def borrar_bebida(request, id):
     bebida = Bebida.objects.get(id=id)
     bebida.delete()
     return redirect("listado_bebidas")
 
-
+@login_required
 def borrar_mesa(request, id):
     mesa = Mesa.objects.get(id=id)
     mesa.delete()
     return redirect("listado_mesas")
 
-
+@login_required
 def borrar_empleado(request, id):
     empleado = Empleado.objects.get(id=id)
     empleado.delete()
@@ -115,7 +116,7 @@ def borrar_empleado(request, id):
 
 
 
-
+@login_required
 def actualizar_empleado(request, id):
 
     empleado = Empleado.objects.get(id=id)
