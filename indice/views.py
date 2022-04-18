@@ -87,3 +87,8 @@ def editar_user (request):
         }
     )
     return render(request, "log2/editar_user.html", {"form": form, "msj": ""})
+
+
+
+def about_me(request):
+    return render(request, "about.html", {})

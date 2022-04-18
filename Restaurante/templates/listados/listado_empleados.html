@@ -9,6 +9,8 @@
 
 <li>
     {{empleado.nombre}}
+    {{empleado.apellido}}
+    Puesto: {{empleado.puesto}}
     <a href={% url "actualizar_empleado" empleado.id %}>Actualizar</a>
     <a href={% url "borrar_empleado" empleado.id %}>Borrar</a>
 </li>

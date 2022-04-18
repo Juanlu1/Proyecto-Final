@@ -8,13 +8,16 @@
 {% for mesa in listado_mesas %}
 
 <li>
-    {{mesa.nombre}}
-    {% if mesa.grande %}{% endif %}
-        Tamaño: Grande
-    {% if mesa.chica %}{% endif %}
-        Tamaño: Chica
-    {% if mesa.reservada %}{% endif %}
-        Esta reservada
+    Número: {{mesa.numero}}        
+    {% if mesa.grande %}
+           Tamaño: Grande
+    {% endif %}
+    {% if mesa.chica %}
+           Tamaño: Chica
+    {% endif %}
+    {% if mesa.reservada %}
+           Esta reservada
+    {% endif %}
     <a href={% url "borrar_mesa" mesa.id %}>Borrar</a>
 </li>
 

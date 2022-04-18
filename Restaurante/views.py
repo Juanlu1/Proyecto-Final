@@ -19,7 +19,7 @@ def formulario_comidas(request):
             chico=data["chico"])
             nueva_comida.save()
         listado_comidas = Comida.objects.all()
-        return render(request, "listados/listado_comidas.html", {"listado_comidas": listado_comidas})
+        return render(request, "index.html", {"listado_comidas": listado_comidas})
     return render(request, "restaurante/formulario_comidas.html", {"formulario": formulario})
 
 @login_required
@@ -32,7 +32,7 @@ def formulario_bebidas(request):
             data = formulario.cleaned_data
             nueva_bebida = Bebida(nombre=data["nombre"], grande=data["grande"], chico=data["chico"])
             nueva_bebida.save()
-        return render(request, "restaurante/formulario_bebidas.html", {})
+        return render(request, "index.html", {})
     return render(request, "restaurante/formulario_bebidas.html", {"formulario": formulario})
 
 @login_required
@@ -46,7 +46,7 @@ def formulario_empleados(request):
             nuevo_empleado = Empleado(nombre=data["nombre"], apellido=data["apellido"], mail=data["mail"], 
             puesto=data["puesto"])
             nuevo_empleado.save()
-        return render(request, "restaurante/formulario_empleados.html", {})
+        return render(request, "index.html", {})
     return render(request, "restaurante/formulario_empleados.html", {"formulario": formulario})
 
 @login_required
@@ -60,7 +60,7 @@ def formulario_mesas(request):
             nueva_mesa = Mesa(numero=data["numero"], grande=data["grande"], chica=data["chica"], 
             reservada=data["reservada"])
             nueva_mesa.save()
-        return render(request, "restaurante/formulario_mesas.html", {})
+        return render(request, "index.html", {})
     return render(request, "restaurante/formulario_mesas.html", {"formulario": formulario})
 
 
@@ -75,7 +75,7 @@ def listado_comidas(request):
 
 def listado_mesas(request):
     listado_mesas = Mesa.objects.all()
-    return render(request, "listados/listado_mesas.html", {"listado_mesas": sorted(listado_mesas, key=lambda x: x.nombre)})
+    return render(request, "listados/listado_mesas.html", {"listado_mesas": sorted(listado_mesas, key=lambda x: x.numero)})
 
 
 def listado_empleados(request):
