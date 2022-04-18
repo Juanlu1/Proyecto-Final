@@ -4,21 +4,21 @@ from django import forms
 class ComidaFormulario(forms.Form):
     nombre = forms.CharField(max_length=30)
     clasificacion_en_carta = forms.CharField(max_length=50)
-    grande = forms.BooleanField()
-    chico = forms.BooleanField()
+    grande = forms.BooleanField(required=False)
+    chico = forms.BooleanField(required=False)
 
 
 class BebidaFormulario(forms.Form):
     nombre = forms.CharField(max_length=30)
-    grande = forms.BooleanField()
-    chico = forms.BooleanField()
+    grande = forms.BooleanField(required=False)
+    chico = forms.BooleanField(required=False)
 
 
 class MesaFormulario(forms.Form):
     numero = forms.IntegerField()
-    grande = forms.BooleanField()
-    chica = forms.BooleanField()
-    reservada = forms.BooleanField()
+    grande = forms.BooleanField(required=False)
+    chica = forms.BooleanField(required=False)
+    reservada = forms.BooleanField(required=False)
 
 
 class EmpleadoFormulario(forms.Form):

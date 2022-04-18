@@ -2,16 +2,22 @@
 
 {% block a %}
 
-<a href= {% url "formulario_comidas" %}>Crear una comida</a>
+<a style="text-align: left" href= {% url "formulario_comidas" %}>Crear una comida</a>
 
-
+<ul style="text-align: left">
 {% for comida in listado_comidas %}
 
 <li>
-    {{comida}}
-    <a href={% url "borrar_comida" %}>Borrar</a>
+    {{comida.nombre}}
+    {% if comida.grande %}
+        Tamaño: Grande
+    {% endif %}
+    {% if comida.chico %}
+        Tamaño: Chico
+    {% endif %}
+    <a href={% url "borrar_comida" comida.id %}>Borrar</a>
 </li>
 
 {% endfor %}
-
+</ul>
 {% endblock a %}

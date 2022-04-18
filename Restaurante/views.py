@@ -17,8 +17,9 @@ def formulario_comidas(request):
             data = formulario.cleaned_data
             nueva_comida = Comida(nombre=data["nombre"], clasificacion_en_carta=data["clasificacion_en_carta"], grande=data["grande"],
             chico=data["chico"])
-            nueva_comida.save
-        return render(request, "restaurante/formulario_comidas.html", {})
+            nueva_comida.save()
+        listado_comidas = Comida.objects.all()
+        return render(request, "listados/listado_comidas.html", {"listado_comidas": listado_comidas})
     return render(request, "restaurante/formulario_comidas.html", {"formulario": formulario})
 
 @login_required
@@ -30,7 +31,7 @@ def formulario_bebidas(request):
         if formulario.is_valid():
             data = formulario.cleaned_data
             nueva_bebida = Bebida(nombre=data["nombre"], grande=data["grande"], chico=data["chico"])
-            nueva_bebida.save
+            nueva_bebida.save()
         return render(request, "restaurante/formulario_bebidas.html", {})
     return render(request, "restaurante/formulario_bebidas.html", {"formulario": formulario})
 
@@ -44,7 +45,7 @@ def formulario_empleados(request):
             data = formulario.cleaned_data
             nuevo_empleado = Empleado(nombre=data["nombre"], apellido=data["apellido"], mail=data["mail"], 
             puesto=data["puesto"])
-            nuevo_empleado.save
+            nuevo_empleado.save()
         return render(request, "restaurante/formulario_empleados.html", {})
     return render(request, "restaurante/formulario_empleados.html", {"formulario": formulario})
 
@@ -58,7 +59,7 @@ def formulario_mesas(request):
             data = formulario.cleaned_data
             nueva_mesa = Mesa(numero=data["numero"], grande=data["grande"], chica=data["chica"], 
             reservada=data["reservada"])
-            nueva_mesa.save
+            nueva_mesa.save()
         return render(request, "restaurante/formulario_mesas.html", {})
     return render(request, "restaurante/formulario_mesas.html", {"formulario": formulario})
 
@@ -69,22 +70,22 @@ def formulario_mesas(request):
 
 def listado_comidas(request):
     listado_comidas = Comida.objects.all()
-    return render(request, "listados/listado_comidas.html", {"listado_comidas": listado_comidas})
+    return render(request, "listados/listado_comidas.html", {"listado_comidas": sorted(listado_comidas, key=lambda x: x.nombre)})
 
 
 def listado_mesas(request):
     listado_mesas = Mesa.objects.all()
-    return render(request, "listados/listado_mesas.html", {"listado_mesas": listado_mesas})
+    return render(request, "listados/listado_mesas.html", {"listado_mesas": sorted(listado_mesas, key=lambda x: x.nombre)})
 
 
 def listado_empleados(request):
     listado_empleados = Empleado.objects.all()
-    return render(request, "listados/listado_empleados.html", {"listado_empleados": listado_empleados})
+    return render(request, "listados/listado_empleados.html", {"listado_empleados": sorted(listado_empleados, key=lambda x: x.nombre)})
 
 
 def listado_bebidas(request):
     listado_bebidas = Bebida.objects.all()
-    return render(request, "listados/listado_bebidas.html", {"listado_bebidas": listado_bebidas})
+    return render(request, "listados/listado_bebidas.html", {"listado_bebidas": sorted(listado_bebidas, key=lambda x: x.nombre)})
 
 
 
@@ -130,7 +131,7 @@ def actualizar_empleado(request, id):
             empleado.apellido = data["apellido"]
             empleado.mail = data["mail"]
             empleado.puesto = data["puesto"]
-            empleado.save
+            empleado.save()
         return redirect("listado_empleados")
     
     formulario = EmpleadoFormulario(

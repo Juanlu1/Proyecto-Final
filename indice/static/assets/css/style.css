@@ -2,12 +2,11 @@
 # General
 --------------------------------------------------------------*/
 body {
-  height: 500px;
-  background-image: url("https://i.pinimg.com/736x/79/f7/35/79f735bdc978bb91c3459899cad1a99a.jpg");
+  background-image: url("https://www.itl.cat/pngfile/big/230-2303750_fondos-grises-para-paginas-web.png");
   background-repeat:no-repeat;
   background-position-x:center;
   background-position-y:center;
-  background-size: 10rem;
+  background-size: 100rem;
   font-family: "Open Sans", sans-serif;
   color: #444444;
 }

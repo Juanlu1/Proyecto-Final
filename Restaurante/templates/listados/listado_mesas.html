@@ -2,16 +2,22 @@
 
 {% block a %}
 
-<a href= {% url "formulario_mesas" %}>Crear una mesa</a>
+<a style="text-align: left" href= {% url "formulario_mesas" %}>Crear una mesa</a>
 
-
+<ul style="text-align: left">
 {% for mesa in listado_mesas %}
 
 <li>
-    {{mesa}}
-    <a href={% url "borrar_mesa" %}>Borrar</a>
+    {{mesa.nombre}}
+    {% if mesa.grande %}{% endif %}
+        Tamaño: Grande
+    {% if mesa.chica %}{% endif %}
+        Tamaño: Chica
+    {% if mesa.reservada %}{% endif %}
+        Esta reservada
+    <a href={% url "borrar_mesa" mesa.id %}>Borrar</a>
 </li>
 
 {% endfor %}
-
+</ul>
 {% endblock a %}

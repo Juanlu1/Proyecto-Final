@@ -28,7 +28,7 @@
   <link href="http://127.0.0.1:8000/static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href= {% static "static/assets/css/style.css" %} rel="stylesheet">
+  <link href= {% static "assets/css/style.css" %} rel="stylesheet">
 
 </head>
 
@@ -46,9 +46,7 @@
 
           {% if request.user.is_authenticated %}
 
-          <li><a class="nav-link scrollto active" href={% url 'editar_user' %}>
-            <img src="{{user_avatar_url}}" alt="Editar usuario">
-        </a></li>
+          <li><a class="nav-link scrollto active" href={% url 'editar_user' %}>Editar usuario</a></li>
         <li><a class="nav-link scrollto active" href={% url 'logout' %}>Cerrar sesión</a></li>
         
           {% else %}

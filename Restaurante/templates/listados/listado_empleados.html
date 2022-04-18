@@ -2,17 +2,17 @@
 
 {% block a %}
 
-<a href= {% url "formulario_empleados" %}>Crear un empleado</a>
+<a style="text-align: left" href= {% url "formulario_empleados" %}>Crear un empleado</a>
 
-
+<ul style="text-align: left">
 {% for empleado in listado_empleados %}
 
 <li>
-    {{empleado}}
-    <a href={% url "actualizar_empleado"%}>Actualizar</a>
-    <a href={% url "borrar_empleado" %}>Borrar</a>
+    {{empleado.nombre}}
+    <a href={% url "actualizar_empleado" empleado.id %}>Actualizar</a>
+    <a href={% url "borrar_empleado" empleado.id %}>Borrar</a>
 </li>
 
 {% endfor %}
-
+</ul>
 {% endblock a %}

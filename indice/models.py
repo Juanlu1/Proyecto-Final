@@ -1,9 +1,11 @@
 from django.db import models
-from django.contrib.auth.models import User
 
 # Create your models here.
 
-
-class Avatar(models.Model):
-    imagen = models.ImageField(upload_to= "avatares", null=True, blank=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+class User(models.Model):
+    username = models.CharField(max_length=30)
+    email = models.EmailField()
+    first_name = models.CharField(max_length=40,null=True)
+    last_name = models.CharField(max_length=30, null=True)
+    password = models.CharField(max_length=50)
+    description = models.CharField(max_length=150, null=True)

@@ -2,16 +2,23 @@
 
 {% block a %}
 
-<a href= {% url "listado_bebidas" %}>Crear una bebida</a>
+<a style="text-align: left" href= {% url "listado_bebidas" %}>Crear una bebida</a>
 
+<ul style="text-align: left">
 
 {% for bebida in listado_bebidas %}
 
 <li>
-    {{bebida}}
-    <a href={% url "borrar_bebida" %}>Borrar</a>
+    {{bebida.nombre}}
+    {% if bebida.grande %}
+         Tamaño: Grande
+    {% endif %}
+    {% if bebida.chico %}
+        Tamaño: Chica
+    {% endif %}
+    <a href={% url "borrar_bebida" bebida.id %}>Borrar</a>
 </li>
 
-{% endfor %}
-
+{% endfor %}    
+</ul>
 {% endblock a %}
