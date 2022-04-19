@@ -4,12 +4,16 @@
 
 <a style="text-align: left" href= {% url "formulario_comidas" %}>Crear una comida</a>
 
+<h1 style="text-align: left">Comidas</h1>
+<h4 style="text-align: left; margin-left: 10px">¡Encuentre las comidas que les guste aquí!</h4>
+
 <ul style="text-align: left">
+
 {% for comida in listado_comidas %}
 
 <li>
     {{comida.clasificacion_en_carta}}: 
-    
+
     {{comida.nombre}}
     {% if comida.grande %}
         Tamaño: Grande

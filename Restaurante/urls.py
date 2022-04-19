@@ -17,5 +17,5 @@ urlpatterns = [
     path("pages/empleado/borrar/<int:id>/", views.borrar_empleado, name= "borrar_empleado"),
     path("pages/mesa/borrar/<int:id>/", views.borrar_mesa, name= "borrar_mesa"),
 
-    path("empleado/actualizar/<int:id>/", views.actualizar_empleado, name= "actualizar_empleado")
+    path("pages/empleado/actualizar/<int:id>", views.actualizar_empleado, name= "actualizar_empleado")
 ]

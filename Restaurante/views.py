@@ -135,7 +135,7 @@ def actualizar_empleado(request, id):
         return redirect("listado_empleados")
     
     formulario = EmpleadoFormulario(
-        intial={
+        initial={
             "nombre": empleado.nombre,
             "apellido": empleado.apellido,
             "mail": empleado.mail,
@@ -143,4 +143,4 @@ def actualizar_empleado(request, id):
         }
     )
 
-    return render(request, "actualizar/empleados.html", {"formulario": formulario})
+    return render(request, "actualizar/empleados.html", {"formulario": formulario, "empleado": empleado})
