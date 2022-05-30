@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block a %}
+<form action="">
+    <table>
+        {% if request.user.is_authenticated %}
+        <li><button><a href={% url "logout" %}>Cerrar sesión</a></button></li>
+        <li><button><a href={% url "info_user" %}>Informacion personal</a></button></li>
+        <li><button><a href={% url "editar_user" %}>Editar información</a></button></li>
+        {% else %}
+        <li><button><a href={% url "login" %}>Iniciar sesión</a></button></li>
+        <li><button><a href={% url "registrar" %}>Registrarse</a></button></li>
+        {% endif %}
+    </table>
+</form>
+{% endblock a %}

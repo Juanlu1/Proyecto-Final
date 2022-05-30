@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+
+{% block a %}
+
+<p>
+    Nombre: {{ logued_user.first_name }}
+</p>
+<p>
+    Apellido: {{ logued_user.last_name }}
+</p> 
+<p>
+    Email: {{ logued_user.email }}
+</p> 
+<p>
+    Nombre de usuario: {{ logued_user.username }}
+</p>
+{% if user_extension_logued.link %}
+<p>
+    Link: {{ user_extension_logued.link }}
+</p>
+{% endif %}
+{% if user_extension_logued.more_description %}
+<p>
+    Descripción: {{ user_extension_logued.more_description }}
+</p>
+{% endif %}
+{% if user_extension_logued.avatar.url %}
+<p>
+    Avatar: <img src="{{user_extension_logued.avatar.url}}" alt="Imagen" height="100">
+</p>
+{% endif %}
+
+<p>
+    <button><a href={% url "accounts" %}>Atras</a></button>
+</p>
+<p>
+    <button><a href={% url "editar_user" %}>Editar información</a></button>
+</p>
+
+    
+{% endblock a %}

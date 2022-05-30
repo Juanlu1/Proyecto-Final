@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% block a %}
+
+<p>
+    Nombre: {{ comida.nombre }}
+</p>
+<p>
+    Clasificación en carta: {{ comida.clasificacion_en_carta }}
+</p> 
+<p>
+    {% if comida.grande %}
+    Tamaño: Grande
+    {% elif comida.chico %}
+    Tamaño: Chico
+    {% endif %}
+</p> 
+
+    <button><a href={% url "listado_comidas" %}>Atras</button>
+    <button><a href={% url "actualizar_comida" comida.id %}>Editar</button>
+    <button><a href={% url "borrar_comida" comida.id %}>Borrar</button>
+
+
+{% endblock a %}

@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% block a %}
+
+<p>
+    Numero: {{ mesa.numero }}
+</p>
+<p>
+    {% if mesa.grande %}
+    Tamaño: Grande
+    {% elif mesa.chica %}
+    Tamaño: Chica
+    {% endif %}
+</p> 
+
+    <button><a href={% url "listado_mesas" %}>Atras</button>
+    <button><a href={% url "actualizar_mesa" mesa.id %}>Editar</button>
+    <button><a href={% url "borrar_mesa" mesa.id %}>Borrar</button>
+
+
+{% endblock a %}

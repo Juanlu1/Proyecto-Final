@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% block a %}
+
+<p>
+    Nombre: {{ bebida.nombre }}
+</p>
+<p>
+    {% if bebida.grande %}
+    Tamaño: Grande
+    {% elif bebida.chico %}
+    Tamaño: Chica
+    {% endif %}
+</p> 
+
+    <button><a href={% url "listado_bebidas" %}>Atras</button>
+    <button><a href={% url "actualizar_bebida" bebida.id %}>Editar</button>
+    <button><a href={% url "borrar_bebida" bebida.id %}>Borrar</button>
+
+
+{% endblock a %}

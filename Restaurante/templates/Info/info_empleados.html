@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+{% block a %}
+
+<p>
+    Nombre: {{ empleado.nombre }}
+</p>
+<p>
+    Apellido: {{ empleado.apellido }}
+</p> 
+<p>
+    Mail: {{ empleado.mail }}
+</p> 
+<p>
+    Puesto: {{ empleado.puesto }}
+</p>
+
+    <button><a href={% url "listado_empleados" %}>Atras</button>
+    <button><a href={% url "actualizar_empleado" empleado.id %}>Editar</button>
+    <button><a href={% url "borrar_empleado" empleado.id %}>Borrar</button>
+
+
+
+{% endblock a %}

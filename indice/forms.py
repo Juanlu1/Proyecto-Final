@@ -27,3 +27,6 @@ class Edicion(forms.Form):
     password2 = forms.CharField(label= "Repetir contraseña", widget= forms.PasswordInput(), required=False)
     first_name = forms.CharField(label= "Nombre", max_length=20, required=False)
     last_name = forms.CharField(label= "Apellido", max_length=30, required=False)
+    avatar = forms.ImageField(required=False)
+    link = forms.CharField(label= "link", required=False, max_length=300)
+    more_description = forms.CharField(label= "Descripción", required=False, max_length= 500)

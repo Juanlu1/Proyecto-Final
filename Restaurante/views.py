@@ -144,3 +144,126 @@ def actualizar_empleado(request, id):
     )
 
     return render(request, "actualizar/empleados.html", {"formulario": formulario, "empleado": empleado})
+
+
+
+@login_required
+def actualizar_comida(request, id):
+
+    comida = Comida.objects.get(id=id)
+
+    if request.method == "POST":
+        formulario = ComidaFormulario(request.POST)
+
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            comida.nombre = data["nombre"]
+            comida.clasificacion_en_carta = data["clasificacion_en_carta"]
+            comida.grande = data["grande"]
+            comida.chico = data["chico"]
+            comida.save()
+        return redirect("listado_comidas")
+    
+    formulario = ComidaFormulario(
+        initial={
+            "nombre": comida.nombre,
+            "clasificacion_en_carta": comida.clasificacion_en_carta,
+            "grande": comida.grande,
+            "chico": comida.chico
+        }
+    )
+
+    return render(request, "actualizar/comidas.html", {"formulario": formulario, "comida": comida})
+
+
+
+
+@login_required
+def actualizar_bebida(request, id):
+
+    bebida = Bebida.objects.get(id=id)
+
+    if request.method == "POST":
+        formulario = BebidaFormulario(request.POST)
+
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            bebida.nombre = data["nombre"]
+            bebida.grande = data["grande"]
+            bebida.chico = data["chico"]
+            bebida.save()
+        return redirect("listado_bebidas")
+    
+    formulario = BebidaFormulario(
+        initial={
+            "nombre": bebida.nombre,
+            "grande": bebida.grande,
+            "chico": bebida.chico
+        }
+    )
+
+    return render(request, "actualizar/bebidas.html", {"formulario": formulario, "bebida": bebida})
+
+
+
+
+@login_required
+def actualizar_mesa(request, id):
+
+    mesa = Mesa.objects.get(id=id)
+
+    if request.method == "POST":
+        formulario = MesaFormulario(request.POST)
+
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            mesa.numero = data["numero"]
+            mesa.grande = data["grande"]
+            mesa.chica = data["chica"]
+            mesa.reservada = data["reservada"]
+            mesa.save()
+        return redirect("listado_mesas")
+    
+    formulario = MesaFormulario(
+        initial={
+            "numero": mesa.numero,
+            "reservada": mesa.reservada,
+            "grande": mesa.grande,
+            "chica": mesa.chica
+        }
+    )
+
+    return render(request, "actualizar/mesas.html", {"formulario": formulario, "mesa": mesa})
+
+
+
+
+
+
+
+@login_required
+def info_comidas(request, id):
+    comida = Comida.objects.get(id=id)
+    return render(request, "Info/info_comidas.html", {"comida": comida})
+    
+
+
+@login_required
+def info_bebidas(request, id):
+    bebida = Bebida.objects.get(id=id)
+    return render(request, "Info/info_bebidas.html", {"bebida": bebida})
+
+
+
+@login_required
+def info_empleados(request, id):
+    empleado = Empleado.objects.get(id=id)
+    return render(request, "Info/info_empleados.html", {"empleado": empleado})
+
+
+
+@login_required
+def info_mesas(request, id):
+    mesa = Mesa.objects.get(id=id)
+    return render(request, "Info/info_mesas.html", {"mesa": mesa})
+    

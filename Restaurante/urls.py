@@ -17,5 +17,13 @@ urlpatterns = [
     path("pages/empleado/borrar/<int:id>/", views.borrar_empleado, name= "borrar_empleado"),
     path("pages/mesa/borrar/<int:id>/", views.borrar_mesa, name= "borrar_mesa"),
 
-    path("pages/empleado/actualizar/<int:id>", views.actualizar_empleado, name= "actualizar_empleado")
+    path("pages/empleado/actualizar/<int:id>", views.actualizar_empleado, name= "actualizar_empleado"),
+    path("pages/bebidas/actualizar/<int:id>", views.actualizar_bebida, name= "actualizar_bebida"),
+    path("pages/comida/actualizar/<int:id>", views.actualizar_comida, name= "actualizar_comida"),
+    path("pages/mesa/actualizar/<int:id>", views.actualizar_mesa, name= "actualizar_mesa"),
+
+    path("pages/empleado/info/<int:id>", views.info_empleados, name= "info_empleados"),
+    path("pages/bebidas/info/<int:id>", views.info_bebidas, name= "info_bebidas"),
+    path("pages/comida/info/<int:id>", views.info_comidas, name= "info_comidas"),
+    path("pages/mesa/info/<int:id>", views.info_mesas, name= "info_mesas"),
 ]

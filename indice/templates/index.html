@@ -43,17 +43,9 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href={% url 'inicio' %}>Inicio</a></li>   
-
-          {% if request.user.is_authenticated %}
-
-          <li><a class="nav-link scrollto active" href={% url 'editar_user' %}>Editar usuario</a></li>
-        <li><a class="nav-link scrollto active" href={% url 'logout' %}>Cerrar sesión</a></li>
-        
-          {% else %}
-
-          <li><a class="nav-link scrollto active" href={% url 'login' %}>Iniciar sesión</a></li>
-          <li><a class="nav-link scrollto active" href={% url 'registrar' %}>Registrarse</a></li>
-          
+          <li><a class="nav-link scrollto active" href={% url 'accounts' %}>Cuenta </a></li>   
+          {% if user_avatar_url %}
+          <li><img src="{{user_avatar_url}}" alt="Editar imagen" height="40"> </li>
           {% endif %}
           <li><a class="nav-link scrollto active" href={% url 'about' %}>Sobre mí</a></li> 
 
