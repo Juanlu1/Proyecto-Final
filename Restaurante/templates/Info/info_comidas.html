@@ -14,7 +14,17 @@
     Tamaño: Chico
     {% endif %}
 </p> 
-
+<p>
+    Descripción: {{ comida.description | safe}}
+</p>
+<p>
+    fecha_creacion: {{ comida.fecha_creacion | date:"d-m-Y H:m"}}
+</p>
+{% if comida.imagen %}
+<p>
+    <img src="{{comida.imagen.url}}" alt="Imagen" height="100">
+</p>
+{% endif %}
     <button><a href={% url "listado_comidas" %}>Atras</button>
     <button><a href={% url "actualizar_comida" comida.id %}>Editar</button>
     <button><a href={% url "borrar_comida" comida.id %}>Borrar</button>

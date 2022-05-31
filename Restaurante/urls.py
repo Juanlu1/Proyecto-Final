@@ -1,6 +1,7 @@
 from django.urls import path
 from Restaurante import views
-
+from django.conf import settings
+from django.conf.urls.static import static
 urlpatterns = [
     path("formulario/comidas/", views.formulario_comidas, name= "formulario_comidas"),
     path("formulario/bebidas/", views.formulario_bebidas, name= "formulario_bebidas"),
@@ -27,3 +28,4 @@ urlpatterns = [
     path("pages/comida/info/<int:id>", views.info_comidas, name= "info_comidas"),
     path("pages/mesa/info/<int:id>", views.info_mesas, name= "info_mesas"),
 ]
+urlpatterns += static(settings.MEDIA_COMIDA_URL, document_root=settings.MEDIA_COMIDA_ROOT)

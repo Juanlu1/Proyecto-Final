@@ -11,7 +11,8 @@ from .forms import Creacion, Edicion, Login
 
 
 def inicio(request):
-    return render(request, "index.html", {})
+    user_extension_logued, _ = UserInfo.objects.get_or_create(user=request.user)
+    return render(request, "index.html", {"user_extension_logued": user_extension_logued})
 
 
 def iniciar_sesion(request):
@@ -26,8 +27,10 @@ def iniciar_sesion(request):
             user = authenticate(username=username, password=password)
             
             if user is not None:
+                
                 login(request, user)
-                return render(request, "index.html", {"msj": "Iniciaste sesión!", "user_avatar_url": buscar_url_avatar(request.user)})
+                user_extension_logued, _ = UserInfo.objects.get_or_create(user=request.user)
+                return render(request, "index.html", {"msj": "Iniciaste sesión!", "user_extension_logued": user_extension_logued})
             else:
                 return render(request, "log2/iniciar_sesion.html", {"form": form, "msj": "No se autentico"})
         
@@ -49,7 +52,8 @@ def registrar(request):
         if form.is_valid():
             username = form.cleaned_data["username"]
             form.save()
-            return render(request, "index.html", {"msj": f"Se creo el user {username}", "user_avatar_url": buscar_url_avatar(request.user)})
+            user_extension_logued, _ = UserInfo.objects.get_or_create(user=request.user)
+            return render(request, "index.html", {"msj": f"Se creo el user {username}", "user_extension_logued": user_extension_logued})
         else:
             return render(request, "log2/registrar.html", {"form": form, "msj": ""})
     
@@ -82,10 +86,10 @@ def editar_user (request):
 
             logued_user.save()
             user_extension_logued.save()
-            print(request.user)
-            return render (request, "index.html", {"msj": msj, "user_avatar_url": buscar_url_avatar(request.user)})
+            print(data)
+            return render (request, "index.html", {"msj": msj, "user_extension_logued": user_extension_logued})
         else:
-            return render (request, "log2/editar_user.html", {"form": form, "msj": ""})
+            return render (request, "log2/editar_user.html", {"form": form, "msj": "", "user_extension_logued": user_extension_logued})
     
     form = Edicion(
         initial={
@@ -98,12 +102,13 @@ def editar_user (request):
             "more_description": user_extension_logued.more_description,
         }
     )
-    return render(request, "log2/editar_user.html", {"form": form, "msj": ""})
+    return render(request, "log2/editar_user.html", {"form": form, "msj": "", "user_extension_logued": user_extension_logued})
 
 
 
 def about_me(request):
-    return render(request, "about.html", {})
+    user_extension_logued, _ = UserInfo.objects.get_or_create(user=request.user)
+    return render(request, "about.html", {"user_extension_logued": user_extension_logued})
 
 
 @login_required
@@ -114,13 +119,8 @@ def info_user(request):
 
 
 def accounts(request):
-    return render(request, "log2/accounts.html")
+    user_extension_logued, _ = UserInfo.objects.get_or_create(user=request.user)
+    return render(request, "log2/accounts.html", {"user_extension_logued": user_extension_logued})
 
 
 
-def buscar_url_avatar(user):
-    if UserInfo.objects.filter(user=user):
-        return UserInfo.objects.filter(user=user)[0].avatar.url
-    else:
-        return("")
-    

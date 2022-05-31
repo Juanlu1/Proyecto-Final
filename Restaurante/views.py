@@ -16,7 +16,7 @@ def formulario_comidas(request):
         if formulario.is_valid():
             data = formulario.cleaned_data
             nueva_comida = Comida(nombre=data["nombre"], clasificacion_en_carta=data["clasificacion_en_carta"], grande=data["grande"],
-            chico=data["chico"])
+            chico=data["chico"], description=data["description"])
             nueva_comida.save()
         listado_comidas = Comida.objects.all()
         return render(request, "index.html", {"listado_comidas": listado_comidas})
@@ -30,7 +30,7 @@ def formulario_bebidas(request):
         
         if formulario.is_valid():
             data = formulario.cleaned_data
-            nueva_bebida = Bebida(nombre=data["nombre"], grande=data["grande"], chico=data["chico"])
+            nueva_bebida = Bebida(nombre=data["nombre"], grande=data["grande"], chico=data["chico"], description=data["chico"])
             nueva_bebida.save()
         return render(request, "index.html", {})
     return render(request, "restaurante/formulario_bebidas.html", {"formulario": formulario})
@@ -161,6 +161,8 @@ def actualizar_comida(request, id):
             comida.clasificacion_en_carta = data["clasificacion_en_carta"]
             comida.grande = data["grande"]
             comida.chico = data["chico"]
+            comida.description = data["description"]
+            comida.imagen = data["imagen"]
             comida.save()
         return redirect("listado_comidas")
     
@@ -169,7 +171,9 @@ def actualizar_comida(request, id):
             "nombre": comida.nombre,
             "clasificacion_en_carta": comida.clasificacion_en_carta,
             "grande": comida.grande,
-            "chico": comida.chico
+            "chico": comida.chico,
+            "description": comida.description,
+            "imagen": comida.imagen,
         }
     )
 
@@ -191,6 +195,7 @@ def actualizar_bebida(request, id):
             bebida.nombre = data["nombre"]
             bebida.grande = data["grande"]
             bebida.chico = data["chico"]
+            bebida.description = data["description"]
             bebida.save()
         return redirect("listado_bebidas")
     
@@ -198,7 +203,8 @@ def actualizar_bebida(request, id):
         initial={
             "nombre": bebida.nombre,
             "grande": bebida.grande,
-            "chico": bebida.chico
+            "chico": bebida.chico,
+            "description": bebida.description,
         }
     )
 

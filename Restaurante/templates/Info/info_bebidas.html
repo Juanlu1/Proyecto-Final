@@ -11,6 +11,9 @@
     Tamaño: Chica
     {% endif %}
 </p> 
+<p>
+    Descripción: {{ bebida.description | safe}}
+</p>
 
     <button><a href={% url "listado_bebidas" %}>Atras</button>
     <button><a href={% url "actualizar_bebida" bebida.id %}>Editar</button>

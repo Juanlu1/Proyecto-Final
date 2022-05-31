@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'indice',
     'Restaurante',
+    "ckeditor",
 ]
 
 MIDDLEWARE = [
@@ -108,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Argentina/Buenos_Aires'
 
 USE_I18N = True
 
@@ -129,4 +130,8 @@ LOGIN_URL = "/accounts/login/"
 
 MEDIA_URL = "/accounts/media/"
 
+MEDIA_COMIDA_URL = "/pages/media/"
+
 MEDIA_ROOT = os.path.join(BASE_DIR, "accounts/media")
+
+MEDIA_COMIDA_ROOT = os.path.join(BASE_DIR, "pages/media")

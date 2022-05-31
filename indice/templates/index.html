@@ -44,8 +44,8 @@
         <ul>
           <li><a class="nav-link scrollto active" href={% url 'inicio' %}>Inicio</a></li>   
           <li><a class="nav-link scrollto active" href={% url 'accounts' %}>Cuenta </a></li>   
-          {% if user_avatar_url %}
-          <li><img src="{{user_avatar_url}}" alt="Editar imagen" height="40"> </li>
+          {% if user_extension_logued.avatar.url %}
+          <li><img src="{{user_extension_logued.avatar.url}}" alt=" " height="40"> </li>
           {% endif %}
           <li><a class="nav-link scrollto active" href={% url 'about' %}>Sobre mí</a></li> 
 
